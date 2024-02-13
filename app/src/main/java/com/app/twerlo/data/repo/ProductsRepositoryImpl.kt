@@ -1,5 +1,6 @@
 package com.app.twerlo.data.repo
 
+import com.app.twerlo.data.mapper.productDetailsEntity
 import com.app.twerlo.data.mapper.productsEntity
 import com.app.twerlo.data.mapper.toLoginEntity
 import com.app.twerlo.data.network.ApiResult
@@ -18,6 +19,23 @@ class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiServ
       val response = apiService.getProducts()
       if (response.isSuccessful)
         ApiResult(value = response.body()?.productsEntity())
+      else {
+        val error = response.errorBody()?.charStream()?.readText()
+
+        error?.let {
+          return ApiResult(error = ErrorState(response.code(), error.toString()))
+        } ?: throw HttpException(response)
+      }
+    } catch (throwable: Throwable) {
+      ApiResult(error = ErrorState(message = throwable.message))
+    }
+  }
+
+  override suspend fun getProductDetails(id: Int): ApiResult<ProductsEntity, ErrorState> {
+    return try {
+      val response = apiService.getProductDetails(id)
+      if (response.isSuccessful)
+        ApiResult(value = response.body()?.productDetailsEntity())
       else {
         val error = response.errorBody()?.charStream()?.readText()
 

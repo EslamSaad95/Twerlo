@@ -10,4 +10,8 @@ class ProductsUseCase  @Inject constructor(private val repository: ProductsRepo)
   suspend fun getProducts() = flow {
     emit(repository.getProducts())
   }
+
+  suspend fun getProductDetails(id:Int) = flow {
+    emit(repository.getProductDetails(id))
+  }
 }

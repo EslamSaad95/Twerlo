@@ -14,3 +14,14 @@ fun List<ProductsDto>.productsEntity(): List<ProductsEntity> {
 fun ProductsDto.Rating.productRatingEntity(): ProductsEntity.Rating {
   return ProductsEntity.Rating(this.count, this.rate)
 }
+
+fun ProductsDto.productDetailsEntity(): ProductsEntity {
+  return ProductsEntity(
+    this.category,
+    this.description,
+    this.id,
+    this.image,
+    this.price,
+    this.rating.productRatingEntity(),
+    this.title)
+}

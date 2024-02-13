@@ -7,4 +7,6 @@ import com.app.twerlo.domain.entity.ProductsEntity
 
 interface ProductsRepo {
   suspend fun getProducts(): ApiResult<List<ProductsEntity>, ErrorState>
+
+  suspend fun getProductDetails(id:Int):ApiResult<ProductsEntity,ErrorState>
 }
