@@ -1,6 +1,7 @@
 package com.app.twerlo.data.network
 
 import com.app.twerlo.data.network.dto.LoginDto
+import com.app.twerlo.data.network.dto.ProductsDto
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -16,6 +17,6 @@ interface ApiService {
                     @Field("password")password:String): Response<LoginDto>
 
   @GET("products")
-  suspend fun getProducts():Response<>
+  suspend fun getProducts():Response<List<ProductsDto>>
 
 }
