@@ -50,6 +50,7 @@ fun LoginScreen(
     }
 
     is DataState.Success<*> -> {
+      navigator?.popBackStack()
       navigator?.navigate(MainScreenDestination)
 
       viewModel.state.value = DataState.Idle
