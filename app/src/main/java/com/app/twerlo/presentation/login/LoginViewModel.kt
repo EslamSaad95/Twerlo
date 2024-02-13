@@ -1,0 +1,62 @@
+package com.app.twerlo.presentation.login
+
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.app.twerlo.presentation.common.UiText
+import com.app.twerlo.domain.common.DataState
+import com.app.twerlo.domain.userCase.LoginUseCase
+import com.app.twerlo.presentation.common.map
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class LoginViewModel @Inject constructor(private  val useCase: LoginUseCase) : ViewModel() {
+
+
+  private val _state = MutableStateFlow<DataState>(DataState.Idle)
+  val state get() = _state
+
+  val userName = mutableStateOf("")
+  val password = mutableStateOf("")
+
+  val userNameError = mutableStateOf<UiText>(UiText.Empty)
+  val passwordError = mutableStateOf<UiText>(UiText.Empty)
+  val passwordVisible = mutableStateOf(false)
+
+
+  fun login()
+  {
+    state.value = DataState.Loading(fullScreen = false)
+    if(validEntries())
+      viewModelScope.launch {
+       useCase.login(userName.value,password.value).collect{loginUseCase->
+         loginUseCase.value?.let {
+           _state.value = DataState.Success(it)
+           //cachedUseToken
+         }
+         loginUseCase.error.let {throwable->
+           state.value =DataState.Error(UiText.DynamicString(throwable?.map()?.error.toString()))
+         }
+       }
+
+      }
+
+  }
+
+  private fun validEntries(): Boolean {
+    if (userName.value.isEmpty().not()) {
+      userNameError.value = UiText.StringResource(com.app.twerlo.R.string.validations_user_name_empty)
+      return false
+    }
+
+    if (password.value.isEmpty()) {
+      passwordError.value = UiText.StringResource(com.app.twerlo.R.string.validations_password_empty)
+      return false
+    }
+
+    return true
+  }
+}
