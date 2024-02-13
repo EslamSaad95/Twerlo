@@ -38,4 +38,8 @@
   <string name="products_title">المنتجات</string>
   <!--endregion-->
 
+  <!--region Product Details-->
+  <string name="product_details_title">تفاصيل المنتج</string>
+  <!--endregion-->
+
 </resources>

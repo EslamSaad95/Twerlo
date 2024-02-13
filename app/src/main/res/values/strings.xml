@@ -38,4 +38,9 @@
   <string name="products_title">Products</string>
   <!--endregion-->
 
+  <!--region Product Details-->
+  <string name="product_details_title">Product details</string>
+  <!--endregion-->
+
+
 </resources>

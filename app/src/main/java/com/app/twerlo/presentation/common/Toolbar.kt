@@ -20,7 +20,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun MainAppBar(
   title: String,
-  onUpClick: () -> Unit = {},
   actions: @Composable RowScope.() -> Unit = {},
   navigator: DestinationsNavigator? = null,
 ) {

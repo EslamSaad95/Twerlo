@@ -22,24 +22,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.app.twerlo.domain.entity.ProductsEntity
+import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.products.ProductsViewModel
 import com.app.twerlo.presentation.theme.Cerulean
 import com.app.twerlo.presentation.theme.Silver
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
-fun ProductDetailsScreen() {
+fun ProductDetailsScreen(
+  productId: Int,
+  viewModel: ProductDetailsViewModel = hiltViewModel(),
+  navigator: DestinationsNavigator? = null,
+) {
+
 }
 
 @Destination
 @Composable
-fun ProductDetailsContent(productDetailsObj: ProductsEntity) {
-  Scaffold { innerPadding ->
+fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: DestinationsNavigator?) {
+  Scaffold(
+    topBar = { MainAppBar(stringResource(id = com.app.twerlo.R.string.product_details_title),navigator=navigator) },
+  ) { innerPadding ->
 
     Column(
       modifier = Modifier
