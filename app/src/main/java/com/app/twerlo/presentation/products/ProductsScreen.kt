@@ -139,7 +139,7 @@ fun ProductItem(product: ProductsEntity,navigator: DestinationsNavigator?) {
               )
         )
         Modifier.weight(1f)
-        Text(text = product.price.toString(), color = Color.Red)
+        Text(text = "${product.price}$", color = Color.Red)
       }
     }
   }

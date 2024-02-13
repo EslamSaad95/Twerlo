@@ -94,10 +94,10 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
           top = innerPadding.calculateTopPadding(),
           bottom = innerPadding.calculateBottomPadding()
         )
-    ) { de
+    ) {
       AsyncImage(
         modifier = Modifier
-          .height(dimensionResource(id = R.dimen._180sdp)),
+          .height(dimensionResource(id = R.dimen._200sdp)),
         model = productDetailsObj.image,
         contentScale = ContentScale.FillBounds,
         contentDescription = null,
@@ -124,7 +124,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
               )
         )
         Modifier.weight(1f)
-        Text(text = productDetailsObj.price.toString(), color = Color.Red, fontWeight = FontWeight.SemiBold)
+        Text(text = "${productDetailsObj.price}$", color = Color.Red, fontWeight = FontWeight.SemiBold)
       }
       Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen._10sdp)))
       Row(verticalAlignment = Alignment.CenterVertically) {
