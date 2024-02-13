@@ -76,7 +76,7 @@ fun disabledFieldColors() = TextFieldDefaults.colors(
 )
 
 @Composable
-fun textFieldStyle(disabledFontValue: Boolean = false) = TextStyle(
+fun textFieldStyle() = TextStyle(
   color = Color.Black,
   fontSize = dimensionResource(id = _12ssp).value.sp,
   fontWeight = FontWeight.W500,

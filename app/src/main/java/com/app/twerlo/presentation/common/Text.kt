@@ -67,22 +67,14 @@ fun OutLineTextInput(
   keyboardType: KeyboardType = KeyboardType.Text,
   colors: TextFieldColors = textFieldColors(),
   imeAction: ImeAction = ImeAction.Default,
-  singleine: Boolean = true,
-  minlines: Int = 1,
-  maxLines: Int = 1,
-  enabled: Boolean = true,
-  icon: Int,
   isError: Boolean = false,
-  disableFontValue: Boolean = false
 ) {
 
   OutlinedTextField(
     modifier = modifier,
     shape = RoundedCornerShape(dimensionResource(id = R.dimen._6sdp)),
-    singleLine = singleine,
-    minLines = minlines,
-    enabled = enabled,
-    maxLines = maxLines,
+    singleLine = true,
+    enabled = true,
     isError = isError,
     value = value,
     onValueChange = {
@@ -107,55 +99,33 @@ fun OutLineTextInput(
       imeAction = imeAction
     ),
     colors = colors,
-
-    leadingIcon = {
-      Icon(
-        painter = painterResource(id = icon),
-        tint = Color.Unspecified,
-        contentDescription = null,
-        modifier = Modifier.offset(
-          y = dimensionResource(
-            id = if (!singleine) R.dimen._minus20sdp else R
-              .dimen._1sdp
-          )
-        )
-      )
-
-    },
-    textStyle = textFieldStyle(disableFontValue),
+    textStyle = textFieldStyle(),
   )
 }
 
 @Composable
-fun OutLineTextInputWithoutLeadingIcon(
+fun OutlinePasswordTextField(
   value: String,
   @StringRes placeholder: Int,
   errorMessage: String,
   onValueChange: (String) -> Unit,
   modifier: Modifier = Modifier,
-  maxLength: Int = Int.MAX_VALUE,
+  passwordVisible: MutableState<Boolean>,
   keyboardType: KeyboardType = KeyboardType.Text,
-  colors: TextFieldColors = textFieldColors(),
   imeAction: ImeAction = ImeAction.Default,
-  singleine: Boolean = true,
-  minlines: Int = 1,
-  maxLines: Int = 1,
   enabled: Boolean = true,
+  colors: TextFieldColors = textFieldColors(),
   isError: Boolean = false,
-  disableFontValue: Boolean = false
 ) {
-
   OutlinedTextField(
-    modifier = modifier,
+    modifier = modifier.horizontalScroll(rememberScrollState()),
     shape = RoundedCornerShape(dimensionResource(id = R.dimen._6sdp)),
-    singleLine = singleine,
-    minLines = minlines,
-    enabled = enabled,
-    maxLines = maxLines,
-    isError = isError,
+    singleLine = true,
     value = value,
+    isError = isError,
+    enabled = enabled,
     onValueChange = {
-      if (it.length <= maxLength) onValueChange.invoke(it)
+      onValueChange.invoke(it)
     },
     placeholder = {
       Text(
@@ -176,7 +146,23 @@ fun OutLineTextInputWithoutLeadingIcon(
       imeAction = imeAction
     ),
     colors = colors,
-    textStyle = textFieldStyle(disableFontValue),
+    textStyle = textFieldStyle(),
+    visualTransformation = if (passwordVisible.value) VisualTransformation.None
+    else PasswordVisualTransformation(),
+    trailingIcon = {
+      if (enabled) {
+        IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
+          Icon(
+            painter = painterResource(
+              id = if (passwordVisible.value) com.app.twerlo.R.drawable.ic_visibile else
+                com.app.twerlo.R.drawable.ic_visibile_off
+            ),
+            tint = Color.Unspecified,
+            contentDescription = ""
+          )
+        }
+      }
+    }
   )
 }
 
