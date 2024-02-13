@@ -16,6 +16,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,8 +33,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.app.twerlo.data.util.cast
+import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
+import com.app.twerlo.presentation.common.ErrorView
+import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.products.ProductsScreenContent
 import com.app.twerlo.presentation.products.ProductsViewModel
 import com.app.twerlo.presentation.theme.Cerulean
 import com.app.twerlo.presentation.theme.Silver
@@ -43,7 +54,27 @@ fun ProductDetailsScreen(
   viewModel: ProductDetailsViewModel = hiltViewModel(),
   navigator: DestinationsNavigator? = null,
 ) {
+  LaunchedEffect(Unit) {
+    viewModel.getProductDetails(productId)
+  }
 
+  val state by viewModel.state.collectAsState()
+  var data by remember { mutableStateOf<ProductsEntity?>(null) }
+
+  when (state) {
+    is DataState.Idle -> {}
+    is DataState.Loading -> {
+      LoadingDialog()
+    }
+
+    is DataState.Success<*> -> data = state.cast<DataState.Success<ProductsEntity>>().result
+    is DataState.Error -> {
+      val error = state.cast<DataState.Error>().error.asString()
+      ErrorView(message = error) { viewModel.getProductDetails(productId) }
+    }
+  }
+
+  data?.let { ProductDetailsContent(it, navigator) }
 }
 
 @Destination
