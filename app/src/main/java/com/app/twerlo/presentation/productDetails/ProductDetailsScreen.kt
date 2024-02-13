@@ -89,15 +89,15 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
       modifier = Modifier
         .fillMaxWidth()
         .verticalScroll(rememberScrollState())
-        .padding(horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._10sdp))
+        .padding(horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._15sdp))
         .padding(
           top = innerPadding.calculateTopPadding(),
           bottom = innerPadding.calculateBottomPadding()
         )
-    ) {
+    ) { de
       AsyncImage(
         modifier = Modifier
-          .height(dimensionResource(id = R.dimen._120sdp)),
+          .height(dimensionResource(id = R.dimen._180sdp)),
         model = productDetailsObj.image,
         contentScale = ContentScale.FillBounds,
         contentDescription = null,
