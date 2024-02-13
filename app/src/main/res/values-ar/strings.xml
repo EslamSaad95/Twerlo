@@ -34,4 +34,8 @@
   <string name="validations_password_empty">يرجى إدخال كلمة المرور</string>
   <!--endregion-->
 
+  <!--region Products-->
+  <string name="products_title">المنتجات</string>
+  <!--endregion-->
+
 </resources>

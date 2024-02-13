@@ -34,4 +34,8 @@
   <string name="validations_password_empty">Please enter password</string>
   <!--endregion-->
 
+  <!--region Products-->
+  <string name="products_title">Products</string>
+  <!--endregion-->
+
 </resources>
