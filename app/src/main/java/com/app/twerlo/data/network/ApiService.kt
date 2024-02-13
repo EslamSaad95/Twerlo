@@ -15,4 +15,7 @@ interface ApiService {
   suspend fun login(@Field("username")userName:String,
                     @Field("password")password:String): Response<LoginDto>
 
+  @GET("products")
+  suspend fun getProducts():Response<>
+
 }
