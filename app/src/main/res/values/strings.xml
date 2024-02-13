@@ -19,6 +19,10 @@
   <string name="network_unknown_error">Unknown error occurred, please try again.</string>
   <!-- endregion -->
 
+  <!--region Alert-->
+  <string name="alert_ok">Ok</string>
+  <!--endregion-->
+
   <!--region login-->
   <string name="user_name">User name</string>
   <string name="password">Password</string>

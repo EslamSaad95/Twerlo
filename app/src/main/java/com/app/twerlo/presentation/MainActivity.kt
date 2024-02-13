@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.app.twerlo.presentation.destinations.ExceptionScreenDestination
 import com.app.twerlo.presentation.destinations.MainScreenDestination
-import com.app.twerlo.presentation.main.MainScreen
+import com.app.twerlo.presentation.login.MainScreen
 import com.app.twerlo.presentation.theme.AppTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.manualcomposablecalls.composable
