@@ -1,6 +1,7 @@
 package com.app.twerlo.presentation.products
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +41,7 @@ import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
 import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.app.twerlo.presentation.theme.Cerulean
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -88,16 +90,17 @@ fun ProductsScreenContent(
     LazyColumn(modifier = Modifier.padding(top = innerPadding.calculateTopPadding(), bottom =
     dimensionResource(id = com.intuit.sdp.R.dimen._10sdp))) {
       itemsIndexed(products) { _, productItem ->
-        ProductItem(product = productItem)
+        ProductItem(product = productItem,navigator)
       }
     }
   }
 }
 
 @Composable
-fun ProductItem(product: ProductsEntity) {
+fun ProductItem(product: ProductsEntity,navigator: DestinationsNavigator?) {
   Row(modifier = Modifier
     .fillMaxWidth()
+    .clickable { navigator.navigate(ProductsScreenDestination(product.id)) }
     .padding(
       vertical = dimensionResource(id = com.intuit.sdp.R.dimen._6sdp),
       horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)
