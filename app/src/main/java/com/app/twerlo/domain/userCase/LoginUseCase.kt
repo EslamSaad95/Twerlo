@@ -9,4 +9,5 @@ class LoginUseCase @Inject constructor(private val repository: LoginRepo) {
   suspend fun login(userName:String,password:String) = flow {
     emit(repository.login(userName, password))
   }
+
 }

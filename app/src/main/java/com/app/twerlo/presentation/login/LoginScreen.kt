@@ -27,14 +27,17 @@ import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.OutLineTextInput
 import com.app.twerlo.presentation.common.OutlinePasswordTextField
 import com.app.twerlo.presentation.common.UiText
+import com.app.twerlo.presentation.destinations.MainScreenDestination
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @SuppressLint("StateFlowValueCalledInComposition")
-@Destination(start = true)
+@Destination()
+@RootNavGraph(start = true)
 @Composable
-fun MainScreen(
+fun LoginScreen(
   navigator: DestinationsNavigator? = null,
   viewModel: LoginViewModel = hiltViewModel()
 ) {
@@ -47,7 +50,7 @@ fun MainScreen(
     }
 
     is DataState.Success<*> -> {
-      navigator?.navigate(MainScreenDestination())
+      navigator?.navigate(MainScreenDestination)
 
       viewModel.state.value = DataState.Idle
     }
@@ -76,7 +79,7 @@ fun MainScreen(
          .verticalScroll(rememberScrollState())) {
 
        OutLineTextInput(
-         keyboardType = KeyboardType.Phone,
+         keyboardType = KeyboardType.Text,
          isError = viewModel.userNameError.value != UiText.Empty,
          value = viewModel.userName.value,
          modifier = Modifier

@@ -11,6 +11,7 @@ fun Throwable.map(): ApiFailure {
   Log.e("okhttp.OkHttpClient", stackTraceToString())
   try {
     return when (this) {
+
       is HttpException -> when (code()) {
         400 -> ApiFailure.InvalidInput()
         401 -> ApiFailure.UnAuthorizedAccess()
@@ -20,7 +21,7 @@ fun Throwable.map(): ApiFailure {
         else -> ApiFailure.UnKnownError()
       }
 
-      is SocketTimeoutException -> ApiFailure.ConnectionError()
+      is SocketTimeoutException,is IllegalArgumentException -> ApiFailure.ConnectionError()
       is SocketException, is IOException -> ApiFailure.ConnectionError()
       else -> ApiFailure.UnKnownError()
     }

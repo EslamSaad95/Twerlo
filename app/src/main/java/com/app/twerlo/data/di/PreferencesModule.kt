@@ -15,4 +15,4 @@ abstract class PreferencesModule {
   @Binds
   @Singleton
   abstract fun providePrefStore(prefStoreImpl: PrefStoreImpl): PrefStore
-}gi
+}
