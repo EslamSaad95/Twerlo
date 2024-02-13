@@ -19,7 +19,7 @@ interface ApiService {
   @GET("products")
   suspend fun getProducts():Response<List<ProductsDto>>
 
-  @GET("product/{productId}")
+  @GET("products/{productId}")
   suspend fun getProductDetails(@Path("productId")productId:Int):Response<ProductsDto>
 
 }

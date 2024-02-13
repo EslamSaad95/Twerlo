@@ -41,6 +41,7 @@ import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
 import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.destinations.ProductDetailsScreenDestination
 import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.app.twerlo.presentation.theme.Cerulean
 import com.ramcosta.composedestinations.annotation.Destination
@@ -100,7 +101,7 @@ fun ProductsScreenContent(
 fun ProductItem(product: ProductsEntity,navigator: DestinationsNavigator?) {
   Row(modifier = Modifier
     .fillMaxWidth()
-    .clickable { navigator.navigate(ProductsScreenDestination(product.id)) }
+    .clickable { navigator?.navigate(ProductDetailsScreenDestination(product.id)) }
     .padding(
       vertical = dimensionResource(id = com.intuit.sdp.R.dimen._6sdp),
       horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)

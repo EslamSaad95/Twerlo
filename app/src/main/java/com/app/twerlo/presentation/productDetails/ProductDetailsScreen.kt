@@ -1,6 +1,7 @@
 package com.app.twerlo.presentation.productDetails
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -105,7 +106,8 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
       Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen._10sdp)))
       Text(text = productDetailsObj.title, color = Color.Black, fontWeight = FontWeight.Bold)
       Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen._10sdp)))
-      Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+      Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween) {
         Text(
           text = productDetailsObj.category,
           color = Color.White,
@@ -143,7 +145,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
       }
       Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen._10sdp)))
       Text(
-        text = productDetailsObj.description, color = Silver,
+        text = productDetailsObj.description, color = Color.Black,
         fontWeight = FontWeight.Normal
       )
 
