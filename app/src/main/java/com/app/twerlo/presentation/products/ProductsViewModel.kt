@@ -7,10 +7,12 @@ import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.userCase.LoginUseCase
 import com.app.twerlo.domain.userCase.ProductsUseCase
 import com.app.twerlo.presentation.common.UiText
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ProductsViewModel @Inject constructor(
   private val useCase: ProductsUseCase
 ):ViewModel() {

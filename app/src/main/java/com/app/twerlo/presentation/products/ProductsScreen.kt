@@ -1,6 +1,7 @@
 package com.app.twerlo.presentation.products
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -84,7 +85,8 @@ fun ProductsScreenContent(
         navigator = navigator
       )
     }) { innerPadding ->
-    LazyColumn(modifier = Modifier.padding(top = innerPadding.calculateTopPadding())) {
+    LazyColumn(modifier = Modifier.padding(top = innerPadding.calculateTopPadding(), bottom =
+    dimensionResource(id = com.intuit.sdp.R.dimen._10sdp))) {
       itemsIndexed(products) { _, productItem ->
         ProductItem(product = productItem)
       }
@@ -94,33 +96,43 @@ fun ProductsScreenContent(
 
 @Composable
 fun ProductItem(product: ProductsEntity) {
-  Row(modifier = Modifier.padding(top = dimensionResource(id = com.intuit.sdp.R.dimen._10sdp))) {
+  Row(modifier = Modifier
+    .fillMaxWidth()
+    .padding(
+      vertical = dimensionResource(id = com.intuit.sdp.R.dimen._6sdp),
+      horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)
+    )) {
     AsyncImage(
       modifier = Modifier
         .size(dimensionResource(id = com.intuit.sdp.R.dimen._100sdp)),
       model = product.image,
       contentScale = ContentScale.FillBounds,
       contentDescription = null,
-      placeholder = painterResource(com.app.twerlo.R.mipmap.ic_launcher)
+      placeholder = painterResource(com.app.twerlo.R.drawable.ic_launcher_foreground)
     )
     Spacer(modifier = Modifier.width(dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)))
-    Column {
+    Column(modifier = Modifier.fillMaxWidth()) {
       Text(text = product.title, color = Color.Black, fontWeight = FontWeight.Bold)
       Spacer(modifier = Modifier.height(dimensionResource(id = com.intuit.sdp.R.dimen._5sdp)))
       Row(
         modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
       ) {
         Text(
           text = product.category,
           color = Color.White,
+          fontWeight = FontWeight.Light,
           textAlign = TextAlign.Center,
           modifier = Modifier
             .background(
               color = Cerulean,
               shape = RoundedCornerShape(dimensionResource(id = com.intuit.sdp.R.dimen._9sdp))
             )
-            .padding(vertical = dimensionResource(id = com.intuit.sdp.R.dimen._5sdp))
+            .padding(
+              dimensionResource(id = com.intuit.sdp.R.dimen._5sdp),
+
+              )
         )
         Modifier.weight(1f)
         Text(text = product.price.toString(), color = Color.Red)

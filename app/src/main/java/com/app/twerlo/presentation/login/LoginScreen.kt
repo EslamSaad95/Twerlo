@@ -27,7 +27,7 @@ import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.OutLineTextInput
 import com.app.twerlo.presentation.common.OutlinePasswordTextField
 import com.app.twerlo.presentation.common.UiText
-import com.app.twerlo.presentation.destinations.MainScreenDestination
+import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
@@ -51,7 +51,7 @@ fun LoginScreen(
 
     is DataState.Success<*> -> {
       navigator?.popBackStack()
-      navigator?.navigate(MainScreenDestination)
+      navigator?.navigate(ProductsScreenDestination)
 
       viewModel.state.value = DataState.Idle
     }
