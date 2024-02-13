@@ -1,8 +1,8 @@
 package com.app.twerlo.presentation
 
 import androidx.lifecycle.ViewModel
-import com.app.twerlo.data.network.DataState
-import com.app.twerlo.data.network.DataState.Idle
+import com.app.twerlo.domain.entity.DataState
+import com.app.twerlo.domain.entity.DataState.Idle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
