@@ -9,7 +9,7 @@ data class ProductsDatabaseEntity(
 
   @PrimaryKey()
   @ColumnInfo(name = "id")
-  val id: String,
+  val id: Int,
 
   @ColumnInfo(name = "title")
   val title: String,
@@ -28,8 +28,7 @@ data class ProductsDatabaseEntity(
 
   @ColumnInfo(name = "rating")
   val rating: Double,
-)
 
-@ColumnInfo(name = "ratingCount")
-val ratingCount: Int,
+  @ColumnInfo(name = "ratingCount")
+  val ratingCount: Int
 )

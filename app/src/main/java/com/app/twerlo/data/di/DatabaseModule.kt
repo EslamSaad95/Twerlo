@@ -9,6 +9,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import androidx.room.Room
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -21,7 +22,7 @@ class DatabaseModule {
 
   @Provides
   @Singleton
-  fun provideAppDatabase(@ApplicationContext appContext: Context): ProductsDao {
+  fun provideAppDatabase(@ApplicationContext appContext: Context): ProductsDatabase {
     return Room.databaseBuilder(
       appContext,
       ProductsDatabase::class.java, "products"
