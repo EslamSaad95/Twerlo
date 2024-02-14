@@ -6,10 +6,14 @@ import com.app.twerlo.data.mapper.toLoginEntity
 import com.app.twerlo.data.network.ApiResult
 import com.app.twerlo.data.network.ApiService
 import com.app.twerlo.domain.common.ErrorState
+import com.app.twerlo.domain.common.FailureType
 import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.domain.repo.LoginRepo
 import com.app.twerlo.domain.repo.ProductsRepo
 import retrofit2.HttpException
+import java.io.IOException
+import java.net.SocketException
+import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiService) : ProductsRepo {
@@ -27,7 +31,24 @@ class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiServ
         } ?: throw HttpException(response)
       }
     } catch (throwable: Throwable) {
-      ApiResult(error = ErrorState(message = throwable.message))
+      var failureType=FailureType.UnKnownError
+      when (throwable) {
+        is HttpException -> {
+          failureType = when(throwable.code()) {
+            400 -> FailureType.InvalidInput
+            401 -> FailureType.UnAuthorizedAccess
+            403 -> FailureType.Forbidden
+            404 -> FailureType.NotFound
+            500, 503 -> FailureType.ServerError
+            else -> FailureType.UnKnownError
+          }
+        }
+        is SocketTimeoutException -> failureType=FailureType.ConnectionError
+        is IOException -> failureType=FailureType.ConnectionError
+        is SocketException -> failureType=FailureType.ConnectionError
+      }
+
+      ApiResult(error =ErrorState(failureType=failureType))
     }
   }
 
@@ -44,7 +65,24 @@ class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiServ
         } ?: throw HttpException(response)
       }
     } catch (throwable: Throwable) {
-      ApiResult(error = ErrorState(message = throwable.message))
+      var failureType= FailureType.UnKnownError
+      when (throwable) {
+        is HttpException -> {
+          failureType = when(throwable.code()) {
+            400 -> FailureType.InvalidInput
+            401 -> FailureType.UnAuthorizedAccess
+            403 -> FailureType.Forbidden
+            404 -> FailureType.NotFound
+            500, 503 -> FailureType.ServerError
+            else -> FailureType.UnKnownError
+          }
+        }
+        is SocketTimeoutException -> failureType= FailureType.ConnectionError
+        is IOException -> failureType= FailureType.ConnectionError
+        is SocketException -> failureType= FailureType.ConnectionError
+      }
+
+      ApiResult(error =ErrorState(failureType=failureType))
     }
   }
 }

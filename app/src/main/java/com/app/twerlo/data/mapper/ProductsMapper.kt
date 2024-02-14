@@ -12,7 +12,7 @@ fun List<ProductsDto>.productsEntity(): List<ProductsEntity> {
   }
 }
 
-fun List<ProductsDatabaseEntity>.productsEntity(): List<ProductsEntity> {
+fun List<ProductsDatabaseEntity>.productsListEntity(): List<ProductsEntity> {
   return this.map {
     ProductsEntity(
       it.category,

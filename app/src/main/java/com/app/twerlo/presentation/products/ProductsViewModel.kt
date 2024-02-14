@@ -1,12 +1,11 @@
 package com.app.twerlo.presentation.products
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.twerlo.domain.common.DataState
-import com.app.twerlo.domain.userCase.LoginUseCase
 import com.app.twerlo.domain.userCase.ProductsUseCase
 import com.app.twerlo.presentation.common.UiText
+import com.app.twerlo.presentation.common.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -31,6 +30,10 @@ class ProductsViewModel @Inject constructor(
           loginUseCase.error?.let { errorState ->
             if(errorState.message.isNullOrEmpty().not())
               state.value = DataState.Error(UiText.DynamicString(errorState.message.toString()))
+            else if(errorState.failureType!=null)
+            {
+              state.value = DataState.Error(errorState.failureType.toUiText())
+            }
           }
         }
 

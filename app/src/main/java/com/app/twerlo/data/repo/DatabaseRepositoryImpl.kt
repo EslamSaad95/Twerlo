@@ -2,10 +2,9 @@ package com.app.twerlo.data.repo
 
 import com.app.twerlo.data.local_storage.room.ProductsDao
 import com.app.twerlo.data.mapper.productDataBaseEntity
-import com.app.twerlo.data.mapper.productsEntity
+import com.app.twerlo.data.mapper.productsListEntity
 import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.domain.repo.ProductDatabaseRepo
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class DatabaseRepositoryImpl @Inject constructor(private val productDao: ProductsDao) : ProductDatabaseRepo {
@@ -15,6 +14,6 @@ class DatabaseRepositoryImpl @Inject constructor(private val productDao: Product
   }
 
   override suspend fun getAllProductsFromDB(): List<ProductsEntity> {
-    return productDao.getAllTeams().productsEntity()
+    return productDao.getAllTeams().productsListEntity()
   }
 }
