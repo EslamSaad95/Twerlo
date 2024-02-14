@@ -43,6 +43,7 @@ gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.1.0-alpha01" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+room-android-compiler = {module ="androidx.room:room-compiler",version = "2.6.1"}
 #Measurment
 sdp = { module = "com.intuit.sdp:sdp-android", version.ref = "measurment" }
 ssp = { module = "com.intuit.ssp:ssp-android", version.ref = "measurment" }
@@ -65,7 +66,8 @@ ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "
 #Ui Components
 ratingbar = { module = "com.github.a914-gowtham:compose-ratingbar", version = "1.3.4" }
 appreview = { module = "com.google.android.play:review", version = "2.0.1" }
-
+roomRunTime={ module ="androidx.room:room-runtime" ,version = "2.6.1"}
+roomKtx = {module = "androidx.room:room-ktx",version ="2.6.1"}
 [bundles]
 dependencies = [
     "constraint-layout", "compose-viewmodel", "compose-activity", "compose-livedata",
@@ -74,9 +76,9 @@ dependencies = [
     "vector-drawable",
     "retrofit", "logging", "gson-converter", "coroutines", "coroutinesAndroid",
     "sdp", "ssp", "app-update", "app-update-ktx", "coil", "ratingbar",
-    "coil-gif", "hilt", "hilt-compose", "destinations", "appreview",
+    "coil-gif", "hilt", "hilt-compose", "destinations", "appreview","roomKtx","roomRunTime"
 ]
-compilers = ["hilt-android-compiler"]
+compilers = ["hilt-android-compiler","room-android-compiler"]
 
 [plugins]
 ksp = { id = "com.google.devtools.ksp", version = "1.9.0-1.0.13" }
