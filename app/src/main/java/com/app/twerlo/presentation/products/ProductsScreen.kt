@@ -134,7 +134,7 @@ fun ProductItem(product: ProductsEntity,navigator: DestinationsNavigator?) {
               shape = RoundedCornerShape(dimensionResource(id = com.intuit.sdp.R.dimen._9sdp))
             )
             .padding(
-              dimensionResource(id = com.intuit.sdp.R.dimen._5sdp),
+              dimensionResource(id = com.intuit.sdp.R.dimen._7sdp),
 
               )
         )
