@@ -37,7 +37,7 @@ import coil.compose.AsyncImage
 import com.app.twerlo.data.util.cast
 import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
-import com.app.twerlo.presentation.common.ErrorView
+import com.app.twerlo.presentation.common.view.ErrorView
 import com.app.twerlo.presentation.common.view.LoadingDialog
 import com.app.twerlo.presentation.common.view.MainAppBar
 import com.app.twerlo.presentation.common.authentication.clearUserSessions

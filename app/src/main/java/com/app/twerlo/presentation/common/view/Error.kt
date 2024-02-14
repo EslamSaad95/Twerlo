@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.app.twerlo.R
-import com.app.twerlo.presentation.common.view.ButtonFilled
 import com.app.twerlo.presentation.theme.Black
 import com.intuit.sdp.R.dimen._120sdp
 import com.intuit.sdp.R.dimen._20sdp
