@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

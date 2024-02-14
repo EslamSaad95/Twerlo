@@ -25,30 +25,13 @@ class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiServ
         ApiResult(value = response.body()?.productsEntity())
       else {
         val error = response.errorBody()?.charStream()?.readText()
-
         error?.let {
           return ApiResult(error = ErrorState(response.code(), error.toString()))
         } ?: throw HttpException(response)
       }
     } catch (throwable: Throwable) {
-      var failureType=FailureType.UnKnownError
-      when (throwable) {
-        is HttpException -> {
-          failureType = when(throwable.code()) {
-            400 -> FailureType.InvalidInput
-            401 -> FailureType.UnAuthorizedAccess
-            403 -> FailureType.Forbidden
-            404 -> FailureType.NotFound
-            500, 503 -> FailureType.ServerError
-            else -> FailureType.UnKnownError
-          }
-        }
-        is SocketTimeoutException -> failureType=FailureType.ConnectionError
-        is IOException -> failureType=FailureType.ConnectionError
-        is SocketException -> failureType=FailureType.ConnectionError
-      }
 
-      ApiResult(error =ErrorState(failureType=failureType))
+      ApiResult(error = ErrorState(failureType = throwable.mapToFailureType()))
     }
   }
 
@@ -65,24 +48,7 @@ class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiServ
         } ?: throw HttpException(response)
       }
     } catch (throwable: Throwable) {
-      var failureType= FailureType.UnKnownError
-      when (throwable) {
-        is HttpException -> {
-          failureType = when(throwable.code()) {
-            400 -> FailureType.InvalidInput
-            401 -> FailureType.UnAuthorizedAccess
-            403 -> FailureType.Forbidden
-            404 -> FailureType.NotFound
-            500, 503 -> FailureType.ServerError
-            else -> FailureType.UnKnownError
-          }
-        }
-        is SocketTimeoutException -> failureType= FailureType.ConnectionError
-        is IOException -> failureType= FailureType.ConnectionError
-        is SocketException -> failureType= FailureType.ConnectionError
-      }
-
-      ApiResult(error =ErrorState(failureType=failureType))
+      ApiResult(error = ErrorState(failureType = throwable.mapToFailureType()))
     }
   }
 }

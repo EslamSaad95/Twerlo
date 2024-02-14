@@ -1,5 +1,6 @@
 package com.app.twerlo.data.repo
 
+import android.util.Log
 import com.app.twerlo.data.local_storage.room.ProductsDao
 import com.app.twerlo.data.mapper.productDataBaseEntity
 import com.app.twerlo.data.mapper.productsListEntity
@@ -14,6 +15,6 @@ class DatabaseRepositoryImpl @Inject constructor(private val productDao: Product
   }
 
   override suspend fun getAllProductsFromDB(): List<ProductsEntity> {
-    return productDao.getAllTeams().productsListEntity()
+   return  productDao.getAllProducts().productsListEntity()
   }
 }

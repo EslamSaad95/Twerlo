@@ -38,13 +38,10 @@ import com.app.twerlo.data.util.cast
 import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
-import com.app.twerlo.presentation.common.LoadingDialog
-import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.common.view.LoadingDialog
+import com.app.twerlo.presentation.common.view.MainAppBar
 import com.app.twerlo.presentation.common.authentication.clearUserSessions
-import com.app.twerlo.presentation.products.ProductsScreenContent
-import com.app.twerlo.presentation.products.ProductsViewModel
 import com.app.twerlo.presentation.theme.Cerulean
-import com.app.twerlo.presentation.theme.Silver
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

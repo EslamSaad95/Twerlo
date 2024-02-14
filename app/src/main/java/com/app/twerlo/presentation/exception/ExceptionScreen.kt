@@ -23,7 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.app.twerlo.data.util.findActivity
 import com.app.twerlo.presentation.MainActivity
-import com.app.twerlo.presentation.common.ButtonFilled
+import com.app.twerlo.presentation.common.view.ButtonFilled
 import com.app.twerlo.presentation.theme.Black
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
@@ -60,7 +60,7 @@ fun ExceptionScreen() {
 
     ButtonFilled(
       text = com.app.twerlo.R.string.exception_restart,
-      modifier = Modifier.padding(horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._15sdp))
+      modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen._15sdp))
     ) {
       activity.startActivity(Intent(activity, MainActivity::class.java))
       activity.finishAffinity()

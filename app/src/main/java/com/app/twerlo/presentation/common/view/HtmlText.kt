@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import android.graphics.Typeface
 import android.text.Html

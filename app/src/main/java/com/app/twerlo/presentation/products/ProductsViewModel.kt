@@ -1,14 +1,13 @@
 package com.app.twerlo.presentation.products
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.twerlo.data.local_storage.prefs.PrefStore
 import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.common.FailureType
+import com.app.twerlo.domain.userCase.ProductDatabaseUseCase
 import com.app.twerlo.domain.userCase.ProductsUseCase
 import com.app.twerlo.presentation.common.UiText
-import com.app.twerlo.presentation.common.authentication.clearUserSessions
 import com.app.twerlo.presentation.common.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductsViewModel @Inject constructor(
   private val useCase: ProductsUseCase,
+  private val dbUseCase:ProductDatabaseUseCase,
   private val prefStore: PrefStore
 ) : ViewModel() {
 
@@ -30,19 +30,35 @@ class ProductsViewModel @Inject constructor(
   fun getProducts() {
     viewModelScope.launch {
       state.value = DataState.Loading(fullScreen = false)
-      useCase.getProducts().collect { loginUseCase ->
-        loginUseCase.value?.let { products ->
+      useCase.getProducts().collect { productUseCase ->
+        productUseCase.value?.let { products ->
           _state.value = DataState.Success(products)
+          products.forEach { productItem ->
+            dbUseCase.insertProductEntityToDatabase(productItem)
+          }
         }
-        loginUseCase.error?.let { errorState ->
+
+        productUseCase.error?.let { errorState ->
           if (errorState.message.isNullOrEmpty().not())
-            state.value = DataState.Error(UiText.DynamicString(errorState.message.toString()))
+            state.value = DataState.Error(errorState.toUiText())
           else if (errorState.failureType != null) {
-            if (errorState.failureType == FailureType.UnAuthorizedAccess) {
-              prefStore.clear()
-              _restartAppState.value = true
-            } else
-              state.value = DataState.Error(errorState.failureType.toUiText())
+            when (errorState.failureType) {
+              FailureType.UnAuthorizedAccess -> {
+                prefStore.clear()
+                _restartAppState.value = true
+              }
+
+              FailureType.ConnectionError -> {
+                dbUseCase.getProductsFromDatabase().collect { products ->
+                  if (products.isEmpty())
+                    state.value = DataState.Error(errorState.failureType.toUiText())
+                  else
+                    _state.value = DataState.Success(products)
+                }
+              }
+
+              else -> state.value = DataState.Error(errorState.failureType.toUiText())
+            }
           }
         }
       }

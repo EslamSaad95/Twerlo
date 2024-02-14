@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Checkbox

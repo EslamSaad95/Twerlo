@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth

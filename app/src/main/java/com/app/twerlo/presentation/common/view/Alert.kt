@@ -1,4 +1,4 @@
-package com.app.twerlo.presentation.common
+package com.app.twerlo.presentation.common.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

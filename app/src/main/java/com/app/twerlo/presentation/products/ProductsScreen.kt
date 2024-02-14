@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -35,15 +34,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.app.twerlo.R
 import com.app.twerlo.data.util.cast
 import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
-import com.app.twerlo.presentation.common.LoadingDialog
-import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.common.view.LoadingDialog
+import com.app.twerlo.presentation.common.view.MainAppBar
 import com.app.twerlo.presentation.common.authentication.clearUserSessions
 import com.app.twerlo.presentation.destinations.ProductDetailsScreenDestination
-import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.app.twerlo.presentation.theme.Cerulean
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -88,7 +87,7 @@ fun ProductsScreenContent(
   Scaffold(
     topBar = {
       MainAppBar(
-        title = stringResource(id = com.app.twerlo.R.string.products_title),
+        title = stringResource(id = R.string.products_title),
         navigator = navigator
       )
     }) { innerPadding ->

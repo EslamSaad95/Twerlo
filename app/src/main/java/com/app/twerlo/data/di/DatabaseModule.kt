@@ -14,18 +14,18 @@ import androidx.room.Room
 @InstallIn(SingletonComponent::class)
 @Module
 class DatabaseModule {
+
   @Provides
   fun provideChannelDao(appDatabase: ProductsDatabase): ProductsDao {
     return appDatabase.productDao()
   }
-
 
   @Provides
   @Singleton
   fun provideAppDatabase(@ApplicationContext appContext: Context): ProductsDatabase {
     return Room.databaseBuilder(
       appContext,
-      ProductsDatabase::class.java, "products"
+      ProductsDatabase::class.java, "productDB"
     ).build()
   }
 }
