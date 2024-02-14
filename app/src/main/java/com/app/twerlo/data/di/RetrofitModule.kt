@@ -47,7 +47,7 @@ object RetrofitModule {
       val request = it.request().newBuilder()
         .header("Content-Type", "application/json")
         .header("Platform", "android")
-        .header("Authorization", if(prefStore.getUserToken().isNullOrEmpty())"" else "Bearer${prefStore.getUserToken()}}")
+        .header("Authorization", if(prefStore.getUserToken().isNullOrEmpty())"" else "${prefStore.getUserToken()}}")
         .build()
       it.proceed(request)
     })

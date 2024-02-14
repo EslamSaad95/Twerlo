@@ -41,6 +41,7 @@ import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
 import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.common.authentication.clearUserSessions
 import com.app.twerlo.presentation.destinations.ProductDetailsScreenDestination
 import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.app.twerlo.presentation.theme.Cerulean
@@ -58,7 +59,10 @@ fun ProductsScreen(
   }
 
   val state by viewModel.state.collectAsState()
+  val restartApp by viewModel.restartAppState.collectAsState()
   var data by remember { mutableStateOf<List<ProductsEntity>?>(null) }
+  if (restartApp)
+    clearUserSessions()
 
   when (state) {
     is DataState.Idle -> {}
@@ -88,17 +92,21 @@ fun ProductsScreenContent(
         navigator = navigator
       )
     }) { innerPadding ->
-    LazyColumn(modifier = Modifier.padding(top = innerPadding.calculateTopPadding(), bottom =
-    dimensionResource(id = com.intuit.sdp.R.dimen._10sdp))) {
+    LazyColumn(
+      modifier = Modifier.padding(
+        top = innerPadding.calculateTopPadding(), bottom =
+        dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)
+      )
+    ) {
       itemsIndexed(products) { _, productItem ->
-        ProductItem(product = productItem,navigator)
+        ProductItem(product = productItem, navigator)
       }
     }
   }
 }
 
 @Composable
-fun ProductItem(product: ProductsEntity,navigator: DestinationsNavigator?) {
+fun ProductItem(product: ProductsEntity, navigator: DestinationsNavigator?) {
   Row(modifier = Modifier
     .fillMaxWidth()
     .clickable { navigator?.navigate(ProductDetailsScreenDestination(product.id)) }

@@ -40,6 +40,7 @@ import com.app.twerlo.domain.entity.ProductsEntity
 import com.app.twerlo.presentation.common.ErrorView
 import com.app.twerlo.presentation.common.LoadingDialog
 import com.app.twerlo.presentation.common.MainAppBar
+import com.app.twerlo.presentation.common.authentication.clearUserSessions
 import com.app.twerlo.presentation.products.ProductsScreenContent
 import com.app.twerlo.presentation.products.ProductsViewModel
 import com.app.twerlo.presentation.theme.Cerulean
@@ -60,7 +61,10 @@ fun ProductDetailsScreen(
   }
 
   val state by viewModel.state.collectAsState()
+  val restartApp by viewModel.restartAppState.collectAsState()
   var data by remember { mutableStateOf<ProductsEntity?>(null) }
+  if (restartApp)
+    clearUserSessions()
 
   when (state) {
     is DataState.Idle -> {}
