@@ -119,7 +119,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
               shape = RoundedCornerShape(dimensionResource(id = R.dimen._9sdp))
             )
             .padding(
-              dimensionResource(id = com.intuit.sdp.R.dimen._5sdp),
+              dimensionResource(id = com.intuit.sdp.R.dimen._8sdp),
 
               )
         )
@@ -134,7 +134,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
           modifier = Modifier.size(dimensionResource(id = R.dimen._20sdp)),
           tint = Color.Unspecified,
         )
-        Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen._10sdp)))
+        Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen._5sdp)))
         Text(
           text = "${productDetailsObj.rating.rate} (${productDetailsObj.rating.count})", color = Color
             .Black,
