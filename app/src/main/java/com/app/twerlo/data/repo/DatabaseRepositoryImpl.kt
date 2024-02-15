@@ -1,6 +1,5 @@
 package com.app.twerlo.data.repo
 
-import android.util.Log
 import com.app.twerlo.data.local_storage.room.ProductsDao
 import com.app.twerlo.data.mapper.productDataBaseEntity
 import com.app.twerlo.data.mapper.productsListEntity

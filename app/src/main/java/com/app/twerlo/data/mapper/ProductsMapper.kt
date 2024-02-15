@@ -1,8 +1,8 @@
 package com.app.twerlo.data.mapper
 
+import com.app.twerlo.data.local_storage.room.ProductsDatabaseDto
 import com.app.twerlo.data.network.dto.ProductsDto
 import com.app.twerlo.domain.entity.ProductsEntity
-import com.app.twerlo.data.local_storage.room.ProductsDatabaseDto
 
 fun List<ProductsDto>.productsEntity(): List<ProductsEntity> {
   return this.map {
@@ -27,12 +27,7 @@ fun List<ProductsDatabaseDto>.productsListEntity(): List<ProductsEntity> {
   }
 }
 
-fun List<ProductsEntity>.productsDatabase(): List<ProductsDatabaseDto> {
-  return this.map {
-    ProductsDatabaseDto(it.id,it.title,it.price,it.description,it.category,it.image,it.rating.rate,it
-      .rating.count)
-  }
-}
+
 
 fun ProductsDto.Rating.productRatingEntity(): ProductsEntity.Rating {
   return ProductsEntity.Rating(this.count, this.rate)

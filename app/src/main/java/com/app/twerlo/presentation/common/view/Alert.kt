@@ -35,7 +35,7 @@ fun Alert(
   cancelText: String? = null,
   onConfirm: () -> Unit = {},
   onDismiss: () -> Unit = {},
-  closeAutomatic: Boolean = false,it
+  closeAutomatic: Boolean = false,
 ) {
 
   val openDialog = remember { mutableStateOf(true) }
