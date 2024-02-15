@@ -2,13 +2,12 @@ package com.app.twerlo.presentation.common
 
 import com.app.twerlo.R
 import com.app.twerlo.domain.common.ErrorState
-import com.app.twerlo.domain.common.FailureType
 
 fun ErrorState.toUiText():UiText
 {
   return when(this.statusCode)
   {
-    401-> UiText.StringResource(R.string.network_invalid_input)
+    400-> UiText.StringResource(R.string.network_invalid_input)
     401-> UiText.StringResource(R.string.network_unauthorized)
     403-> UiText.StringResource(R.string.network_forbidden)
     404-> UiText.StringResource(R.string.network_not_found)

@@ -34,9 +34,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
-import com.app.twerlo.presentation.common.authentication.clearUserSessions
+import com.app.twerlo.presentation.common.DataState
+import com.app.twerlo.presentation.common.authentication.ClearUserSessions
 import com.app.twerlo.presentation.common.cast
 import com.app.twerlo.presentation.common.view.ErrorView
 import com.app.twerlo.presentation.common.view.LoadingDialog
@@ -61,7 +61,7 @@ fun ProductDetailsScreen(
   val restartApp by viewModel.restartAppState.collectAsState()
   var data by remember { mutableStateOf<ProductsEntity?>(null) }
   if (restartApp)
-    clearUserSessions()
+    ClearUserSessions()
 
   when (state) {
     is DataState.Idle -> {}
@@ -90,7 +90,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
       modifier = Modifier
         .fillMaxWidth()
         .verticalScroll(rememberScrollState())
-        .padding(horizontal = dimensionResource(id = com.intuit.sdp.R.dimen._15sdp))
+        .padding(horizontal = dimensionResource(id = R.dimen._15sdp))
         .padding(
           top = innerPadding.calculateTopPadding(),
           bottom = innerPadding.calculateBottomPadding()
@@ -120,7 +120,7 @@ fun ProductDetailsContent(productDetailsObj: ProductsEntity,navigator: Destinati
               shape = RoundedCornerShape(dimensionResource(id = R.dimen._9sdp))
             )
             .padding(
-              dimensionResource(id = com.intuit.sdp.R.dimen._8sdp),
+              dimensionResource(id = R.dimen._8sdp),
 
               )
         )

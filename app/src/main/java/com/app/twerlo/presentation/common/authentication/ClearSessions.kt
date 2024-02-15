@@ -9,7 +9,7 @@ import com.app.twerlo.R
 import com.app.twerlo.presentation.MainActivity
 
 @Composable
-fun clearUserSessions() {
+fun ClearUserSessions() {
 
   val context = LocalContext.current
   Toast.makeText(context, stringResource(id = R.string.network_unauthorized), Toast.LENGTH_LONG).show()

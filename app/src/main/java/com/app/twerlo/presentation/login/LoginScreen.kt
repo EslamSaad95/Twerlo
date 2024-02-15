@@ -29,12 +29,10 @@ import com.app.twerlo.presentation.common.view.OutLineTextInput
 import com.app.twerlo.presentation.common.view.OutlinePasswordTextField
 import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.intuit.sdp.R
-import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @SuppressLint("StateFlowValueCalledInComposition")
-@Destination()
 @RootNavGraph(start = true)
 @Composable
 fun LoginScreen(

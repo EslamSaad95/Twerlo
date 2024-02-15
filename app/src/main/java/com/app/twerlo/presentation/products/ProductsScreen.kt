@@ -35,13 +35,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.app.twerlo.R
-import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
+import com.app.twerlo.presentation.common.DataState
+import com.app.twerlo.presentation.common.authentication.ClearUserSessions
+import com.app.twerlo.presentation.common.cast
 import com.app.twerlo.presentation.common.view.ErrorView
 import com.app.twerlo.presentation.common.view.LoadingDialog
 import com.app.twerlo.presentation.common.view.MainAppBar
-import com.app.twerlo.presentation.common.authentication.clearUserSessions
-import com.app.twerlo.presentation.common.cast
 import com.app.twerlo.presentation.destinations.ProductDetailsScreenDestination
 import com.app.twerlo.presentation.theme.Cerulean
 import com.ramcosta.composedestinations.annotation.Destination
@@ -61,7 +61,7 @@ fun ProductsScreen(
   val restartApp by viewModel.restartAppState.collectAsState()
   var data by remember { mutableStateOf<List<ProductsEntity>?>(null) }
   if (restartApp)
-    clearUserSessions()
+    ClearUserSessions()
 
   when (state) {
     is DataState.Idle -> {}
@@ -119,7 +119,7 @@ fun ProductItem(product: ProductsEntity, navigator: DestinationsNavigator?) {
       model = product.image,
       contentScale = ContentScale.FillBounds,
       contentDescription = null,
-      placeholder = painterResource(com.app.twerlo.R.drawable.ic_launcher_foreground)
+      placeholder = painterResource(R.drawable.ic_launcher_foreground)
     )
     Spacer(modifier = Modifier.width(dimensionResource(id = com.intuit.sdp.R.dimen._10sdp)))
     Column(modifier = Modifier.fillMaxWidth()) {

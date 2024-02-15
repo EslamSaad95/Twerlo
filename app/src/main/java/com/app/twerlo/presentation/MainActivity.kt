@@ -13,12 +13,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import androidx.fragment.app.viewModels
 import com.app.twerlo.presentation.destinations.ExceptionScreenDestination
 import com.app.twerlo.presentation.destinations.LoginScreenDestination
 import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.app.twerlo.presentation.login.LoginScreen
-import com.app.twerlo.presentation.products.ProductsScreen
 import com.app.twerlo.presentation.theme.AppTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.manualcomposablecalls.composable

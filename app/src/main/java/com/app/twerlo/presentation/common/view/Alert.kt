@@ -27,11 +27,6 @@ import com.app.twerlo.presentation.theme.AppTheme
 import com.app.twerlo.presentation.theme.Black
 import kotlinx.coroutines.delay
 
-/**
- * Ahmed Elmokadim
- * elmokadim@gmail.com
- * 15/07/2023
- */
 @Composable
 fun Alert(
   title: String? = stringResource(id = R.string.app_name),
@@ -40,8 +35,7 @@ fun Alert(
   cancelText: String? = null,
   onConfirm: () -> Unit = {},
   onDismiss: () -> Unit = {},
-  closeAutomatic: Boolean = false,
-  disabledFontValue: Boolean = false
+  closeAutomatic: Boolean = false,it
 ) {
 
   val openDialog = remember { mutableStateOf(true) }
@@ -104,7 +98,6 @@ fun ErrorAlert(
   onConfirm: () -> Unit = {},
   onDismiss: () -> Unit = {},
   closeAutomatic: Boolean = false,
-  disabledFontValue: Boolean = false
 ) {
 
   val openDialog = remember { mutableStateOf(true) }
