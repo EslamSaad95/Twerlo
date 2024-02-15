@@ -3,11 +3,10 @@ package com.app.twerlo.presentation.productDetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.twerlo.data.local_storage.prefs.PrefStore
-import com.app.twerlo.domain.common.DataState
 import com.app.twerlo.domain.common.FailureType
 import com.app.twerlo.domain.userCase.ProductDatabaseUseCase
 import com.app.twerlo.domain.userCase.ProductsUseCase
-import com.app.twerlo.presentation.common.UiText
+import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.presentation.common.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

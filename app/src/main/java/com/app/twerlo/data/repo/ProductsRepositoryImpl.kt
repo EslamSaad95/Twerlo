@@ -2,18 +2,12 @@ package com.app.twerlo.data.repo
 
 import com.app.twerlo.data.mapper.productDetailsEntity
 import com.app.twerlo.data.mapper.productsEntity
-import com.app.twerlo.data.mapper.toLoginEntity
-import com.app.twerlo.data.network.ApiResult
+import com.app.twerlo.data.network.dto.ApiResult
 import com.app.twerlo.data.network.ApiService
 import com.app.twerlo.domain.common.ErrorState
-import com.app.twerlo.domain.common.FailureType
 import com.app.twerlo.domain.entity.ProductsEntity
-import com.app.twerlo.domain.repo.LoginRepo
 import com.app.twerlo.domain.repo.ProductsRepo
 import retrofit2.HttpException
-import java.io.IOException
-import java.net.SocketException
-import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class ProductsRepositoryImpl @Inject constructor(private val apiService: ApiService) : ProductsRepo {

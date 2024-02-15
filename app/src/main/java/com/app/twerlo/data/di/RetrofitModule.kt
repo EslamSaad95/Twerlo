@@ -5,7 +5,7 @@ import com.app.twerlo.BuildConfig
 import com.app.twerlo.data.app.App
 import com.app.twerlo.data.local_storage.prefs.PrefStore
 import com.app.twerlo.data.network.ApiService
-import com.app.twerlo.data.util.cast
+import com.app.twerlo.presentation.common.cast
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,11 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-/**
- * Ahmed Elmokadim
- * elmokadim@gmail.com
- * 15/07/2023
- */
+
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {

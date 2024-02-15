@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.twerlo.data.local_storage.prefs.PrefStore
 import com.app.twerlo.presentation.common.UiText
-import com.app.twerlo.domain.common.DataState
+import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.domain.userCase.LoginUseCase
 import com.app.twerlo.presentation.common.toUiText
 import dagger.hilt.android.lifecycle.HiltViewModel

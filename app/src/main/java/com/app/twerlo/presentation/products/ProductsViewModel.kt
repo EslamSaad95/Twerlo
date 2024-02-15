@@ -1,9 +1,10 @@
 package com.app.twerlo.presentation.products
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.twerlo.data.local_storage.prefs.PrefStore
-import com.app.twerlo.domain.common.DataState
+import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.domain.common.FailureType
 import com.app.twerlo.domain.userCase.ProductDatabaseUseCase
 import com.app.twerlo.domain.userCase.ProductsUseCase
@@ -23,6 +24,9 @@ class ProductsViewModel @Inject constructor(
 
   private val _state = MutableStateFlow<DataState>(DataState.Idle)
   val state get() = _state
+
+
+
 
   private val _restartAppState = MutableStateFlow(false)
   val restartAppState get() = _restartAppState

@@ -1,6 +1,4 @@
-package com.app.twerlo.domain.common
-
-import com.app.twerlo.presentation.common.UiText
+package com.app.twerlo.presentation.common
 
 sealed class DataState() {
 

@@ -34,13 +34,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.app.twerlo.data.util.cast
-import com.app.twerlo.domain.common.DataState
+import com.app.twerlo.presentation.common.DataState
 import com.app.twerlo.domain.entity.ProductsEntity
+import com.app.twerlo.presentation.common.authentication.clearUserSessions
+import com.app.twerlo.presentation.common.cast
 import com.app.twerlo.presentation.common.view.ErrorView
 import com.app.twerlo.presentation.common.view.LoadingDialog
 import com.app.twerlo.presentation.common.view.MainAppBar
-import com.app.twerlo.presentation.common.authentication.clearUserSessions
 import com.app.twerlo.presentation.theme.Cerulean
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination

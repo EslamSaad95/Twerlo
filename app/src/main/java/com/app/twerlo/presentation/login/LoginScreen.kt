@@ -19,14 +19,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.app.twerlo.data.util.cast
-import com.app.twerlo.domain.common.DataState
+import com.app.twerlo.presentation.common.DataState
+import com.app.twerlo.presentation.common.UiText
+import com.app.twerlo.presentation.common.cast
 import com.app.twerlo.presentation.common.view.ButtonFilled
 import com.app.twerlo.presentation.common.view.ErrorAlert
 import com.app.twerlo.presentation.common.view.LoadingDialog
 import com.app.twerlo.presentation.common.view.OutLineTextInput
 import com.app.twerlo.presentation.common.view.OutlinePasswordTextField
-import com.app.twerlo.presentation.common.UiText
 import com.app.twerlo.presentation.destinations.ProductsScreenDestination
 import com.intuit.sdp.R
 import com.ramcosta.composedestinations.annotation.Destination
